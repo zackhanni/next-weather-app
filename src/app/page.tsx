@@ -24,7 +24,9 @@ export default function Home(): JSX.Element {
       temp_min: 0,
       humidity: 0,
     },
-    weather: [],
+    weather: [{
+      main: '', 
+    }],
     wind: {
       speed: 0,
     },
