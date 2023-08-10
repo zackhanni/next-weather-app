@@ -1,28 +1,41 @@
-"use client";
+"use client"
 
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function Home() {
-  interface WeatherData {
-    name?: string;
-    main?: {
-      temp: number;
-      temp_max: number;
-      temp_min: number;
-      humidity: number;
-    };
-    weather?: { main: string }[];
-    wind: { speed: number };
-  }
+interface WeatherData {
+  name?: string;
+  main?: {
+    temp: number;
+    temp_max: number;
+    temp_min: number;
+    humidity: number;
+  };
+  weather?: { main: string }[];
+  wind: { speed: number };
+}
 
-  const [data, setData] = useState<WeatherData>({});
+export default function Home(): JSX.Element {
+  const [data, setData] = useState<WeatherData>({
+    name: "",
+    main: {
+      temp: 0,
+      temp_max: 0,
+      temp_min: 0,
+      humidity: 0,
+    },
+    weather: [],
+    wind: {
+      speed: 0,
+    },
+  });
+  
   const [location, setLocation] = useState<string>("");
   const [coords, setCoords] = useState<{
     lat: number;
     lon: number;
     country: string;
-  }>({});
+  }>({ lat: 0, lon: 0, country: "" });
 
   const longLat = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=5b0ea1f33262ab853ddea80cb83bdaa3`;
   const searchLocation = async (
