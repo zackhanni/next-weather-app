@@ -3,14 +3,26 @@
 import React, {useState} from "react";
 import axios from "axios";
 
+
 export default function Home() {
 
-  const [data, setData] = useState({})
-  const [location, setLocation] = useState('')
-  const [coords, setCoords] = useState({})
+  interface WeatherData {
+    name?: string;
+    main?: {
+      temp: number;
+      temp_max: number;
+      temp_min: number;
+      humidity: number;
+    };
+    weather?: { main: string }[];
+  }
+
+    const [data, setData] = useState<WeatherData>({})
+    const [location, setLocation] = useState<string>('')
+    const [coords, setCoords] = useState<{ lat: number; lon: number }>({})
 
   const longLat = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=5b0ea1f33262ab853ddea80cb83bdaa3`
-  const searchLocation = async (event) => {
+  const searchLocation = async (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
 
       const response1 = await axios.get(longLat);
