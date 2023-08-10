@@ -41,7 +41,7 @@ export default function Home(): JSX.Element {
     country: string;
   }>({ lat: 0, lon: 0, country: "" });
 
-  const longLat = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=5b0ea1f33262ab853ddea80cb83bdaa3`;
+  const longLat = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=5b0ea1f33262ab853ddea80cb83bdaa3`;
   const searchLocation = async (
     event: React.KeyboardEvent<HTMLInputElement>
   ) => {
