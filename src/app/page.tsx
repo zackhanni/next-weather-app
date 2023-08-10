@@ -15,11 +15,12 @@ export default function Home() {
       humidity: number;
     };
     weather?: { main: string }[];
+    wind: { speed: number };
   }
 
     const [data, setData] = useState<WeatherData>({})
     const [location, setLocation] = useState<string>('')
-    const [coords, setCoords] = useState<{ lat: number; lon: number }>({})
+    const [coords, setCoords] = useState<{ lat: number; lon: number; country: string }>({})
 
   const longLat = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=5b0ea1f33262ab853ddea80cb83bdaa3`
   const searchLocation = async (event: React.KeyboardEvent<HTMLInputElement>) => {
